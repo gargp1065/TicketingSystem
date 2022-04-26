@@ -47,7 +47,7 @@ class Project extends Component {
 
     deleteProject(e) {
         e.preventDefault();
-        axios.delete(`api/projects/deleteProject/${this.props.location.state.id}`).then(res => {
+        axios.delete(`${API}/projects/deleteProject/${this.props.location.state.id}`).then(res => {
             alert("Project deleted");
             this.props.history.push('/dashboard');
         }).catch(err => alert("Error in deleting"));
@@ -63,7 +63,7 @@ class Project extends Component {
         console.log(updatedProject)
         const id = this.props.location.state.id;
         console.log(id);
-        axios.put(`/api/projects/updateProject/${id}`, updatedProject).then(res => {
+        axios.put(`${API}/projects/updateProject/${id}`, updatedProject).then(res => {
             alert("Project details have been updated");
             this.props.location.state.name = this.state.name;
             this.props.location.state.description = this.state.description

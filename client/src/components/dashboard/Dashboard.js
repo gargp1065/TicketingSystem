@@ -6,6 +6,7 @@ import { Button, Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'react
 import classnames from "classnames";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { API } from "../../config"
 class Dashboard extends Component {
     constructor(props) {
         super(props);
@@ -21,7 +22,7 @@ class Dashboard extends Component {
         this.onSubmit = this.onSubmit.bind(this);
     }
     componentDidMount() {
-        axios.get('/api/projects/getAll').then(res => {
+        axios.get(`${API}/projects/getAll`).then(res => {
             this.setState({
                 projects: res.data
             })
@@ -44,9 +45,9 @@ class Dashboard extends Component {
             creator: this.props.auth.user.id
         }
         console.log(newProject);
-        axios.post('/api/projects/createProject', newProject).then(res => {
+        axios.post(`${API}/projects/createProject`, newProject).then(res => {
             alert("Your project has been registered");
-            axios.get('/api/projects/getAll').then(res => {
+            axios.get(`${API}/projects/getAll`).then(res => {
                 this.setState({
                     projects: res.data
                 })
