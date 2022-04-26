@@ -5,6 +5,7 @@ var jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
 
 const User = require('../../models/user');
+const passport = require('../../passport');
 //testing the application
 router.get('/test', (req, res) => res.json({ msg: "It works!!" }));
 
