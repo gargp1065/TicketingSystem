@@ -4,9 +4,16 @@ const mongoose = require('mongoose');
 const users = require("./routers/api/users");   
 const projects = require('./routers/api/projects');
 const issues = require('./routers/api/issues');
-
+const cors = require('cors');
 const app = express();
-
+const corsOpts = {
+    origin: '*',
+    credentials: true,
+    methods: ['GET','POST','HEAD','PUT','PATCH','DELETE'],
+    allowedHeaders: ['Content-Type'],
+    exposedHeaders: ['Content-Type']
+};
+app.use(cors(corsOpts));
 // Body Parser middleware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());

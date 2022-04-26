@@ -32,7 +32,7 @@ router.get('/test', (req, res, next) => res.json({msg: "It works"}));
 router.get('/getAll', passport.authenticate('jwt', {session: false}), (req, res, next)=> {
     Project.find()
     .then((projects) => {
-        console.log(projects);
+        // console.log(projects);
         res.json(projects);
     })
     .catch(err => console.log(err));
@@ -41,7 +41,7 @@ router.get('/getAll', passport.authenticate('jwt', {session: false}), (req, res,
 
 //create a project
 router.post('/createProject', passport.authenticate('jwt', {session:false}), (req, res, next) => {
-    // console.log(req.headers);
+    console.log(req.headers);
     const token = req.headers.authorization;
     //has the details of the jwt payload
     const decoded = jwt_decode(token);
@@ -85,25 +85,24 @@ router.delete('/deleteProject/:projectId', passport.authenticate('jwt', {session
 
 //updating a project
 router.put('/updateProject/:projectId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-    const upadtedProject = {
-        name: req.body.name, 
-        description: req.body.description, 
-        technologies: req.body.technologies
-    }
+    
+    var name =  req.body.name;
+    var description = req.body.description;
     var projectId = req.params.projectId;
     const token = req.headers.authorization;
+    console.log(projectId);
     //has the details of the jwt payload
     const decoded = jwt_decode(token);
     const userId = decoded.id;
-    console.log(userId);
+    // console.log(userId);
     Project.findById(projectId)
     .then((project) => {
-        console.log(project.creator);
-        console.log(userId);
+        // console.log(project.creator);
+        // console.log(userId);
         if(project.creator != userId)
             return res.status(400).json({msg: "This user didn't create this project"});
         else {
-            Project.findByIdAndUpdate(projectId)
+            Project.findByIdAndUpdate(projectId, { $set: {name, description } })
             .then((project) => {
                 return res.status(200).json({msg: "The details have been updated"});
             }).catch(err => console.log(err));

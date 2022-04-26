@@ -67,7 +67,7 @@ router.post('/login', (req, res, next) => {
                     id: user.id, email: user.email, name: user.name
                 };
                 jwt.sign(payload, "secret", (err, token) => {
-                    res.json( { success: true, token: "Bearer" + token });
+                    res.json( { success: true, token: "Bearer " + token });
                 });
             }
             else return res.status(400).json({passwordIncorrect: "Password Incorrect"});
