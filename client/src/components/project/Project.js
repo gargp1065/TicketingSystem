@@ -6,6 +6,7 @@ import { Button, Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'react
 import classnames from "classnames";
 import axios from "axios";
 import IssueModal from '../project/IssueModal'
+import { API } from "../../config"
 
 
 class Project extends Component {

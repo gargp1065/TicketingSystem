@@ -6,7 +6,8 @@ const bcrypt = require('bcryptjs');
 
 const User = require('../../models/user');
 const passport = require('passport');
-
+const validateRegisterInput = require("../../validation/register");
+const validateLoginInput = require("../../validation/login");
 // require('../../passport')(passport);
 //testing the application
 router.get('/test', (req, res) => res.json({ msg: "It works!!" }));
@@ -22,15 +23,15 @@ router.get('/getAll', passport.authenticate('jwt', {session: false}), (req, res,
 });
 //post req to register a user
 router.post('/register', (req, res, next) => {
-    // const {errors, isValid} = validateRegisterInput(req.body);
-    // if(!isValid) {
-    //     return res.status(400).json(errors);
-    // }
+    const {errors, isValid} = validateRegisterInput(req.body);
+    if(!isValid) {
+        return res.status(400).json(errors);
+    }
     //see if user already exist
     User.findOne({email: req.body.email})
     .then(user => {
         if(user) {
-            return res.status(404).json({ emailAlreadyExists: "Email already exists"})
+            return res.status(404).json({ email: "Email already exists"})
         }
         const newUser = new User({
             name: req.body.name,
@@ -61,12 +62,12 @@ router.post('/register', (req, res, next) => {
 //login api endpoint
 
 router.post('/login', (req, res, next) => {
-    // const {errors, isValid} = validateLoginInput(req.body);
-    // if(!isValid) {
-    //     res.statusCode = 400;
-    //     res.json(errors);
-    //     return; 
-    // }
+    const {errors, isValid} = validateLoginInput(req.body);
+    if(!isValid) {
+        res.statusCode = 400;
+        res.json(errors);
+        return; 
+    }
     User.findOne({email: req.body.email})
     .then((user) => {
         if(!user)
