@@ -5,10 +5,21 @@ var jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs');
 
 const User = require('../../models/user');
-const passport = require('../../passport');
+const passport = require('passport');
+
+// require('../../passport')(passport);
 //testing the application
 router.get('/test', (req, res) => res.json({ msg: "It works!!" }));
 
+
+router.get('/getAll', passport.authenticate('jwt', {session: false}), (req, res, next)=> {
+    User.find()
+    .then((users) => {
+        // console.log(projects);
+        res.json(users);
+    })
+    .catch(err => console.log(err));
+});
 //post req to register a user
 router.post('/register', (req, res, next) => {
     // const {errors, isValid} = validateRegisterInput(req.body);

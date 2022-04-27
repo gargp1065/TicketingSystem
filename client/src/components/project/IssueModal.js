@@ -9,7 +9,7 @@ class IssueModal extends Component {
         this.state = {
             name: '', 
             description: '',
-            assignee: '', 
+            issueType: '', 
             status: 0
         }
         this.onChange = this.onChange.bind(this);
@@ -21,9 +21,10 @@ class IssueModal extends Component {
             name: this.state.name,
             description: this.state.description,
             creator: this.props.cid, 
-            assignee: this.state.assignee,
-            status: this.state.status
+            issueType: this.state.issueType,
+            // status: this.state.status
         }
+        console.log(newIssue);
 
 
     }
@@ -57,6 +58,25 @@ class IssueModal extends Component {
                                 value={this.state.description}
                                 onChange={this.onChange}
                             />
+
+                            <label htmlFor="issueType">Choose the type</label>
+                            <select
+                                type="text"
+                                className={classnames("form-control form-control-lg")}//,{
+                                //   "is-invalid": errors.duration
+                                // })}
+                                placeholder="issueType"
+                                name="issueType"
+                                value={this.state.type}
+                                onChange={this.onChange}
+                            >
+                            <option value>Select Type</option>
+                            <option value="bug">Bug</option>
+                            <option value="task">Task</option>  
+                            </select>
+
+
+
                             <input type="submit" className="btn btn-info btn-block mt-4" value="Add Issue"/>
                         </form>
                     {/* </ModalBody> */}
