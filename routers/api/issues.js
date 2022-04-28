@@ -43,15 +43,17 @@ router.post('/createIssue', passport.authenticate('jwt', {session: false}), (req
     const userId = decoded.id;
     
     const newIssue = new Issue({
+        projectId: req.body.projectId, 
         issueType: req.body.issueType,
+        title: req.body.title,
         description: req.body.description,
         creator: userId,
-        assignee: req.body.assigneeId,
+        assignee: req.body.assignee,
         status: req.body.status
     });
     newIssue.save()
     .then((issue) => res.status(200).json(issue))
-    .catch(err => console.log(err));
+    .catch(err => alert(err));
 })
 
 // //update an issue

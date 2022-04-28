@@ -5,7 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import { Button, Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'reactstrap'
 import classnames from "classnames";
 import axios from "axios";
-import IssueModal from '../project/IssueModal'
+import IssueTable from './IssueTable'
 import { API } from "../../config"
 
 
@@ -19,33 +19,15 @@ class Project extends Component {
             description: this.props.location.state.description,
             project: [],
             isModalOpen: false,
-            isIssueModalOpen: false
         }
     this.onLogoutClick = this.onLogoutClick.bind(this);
-    this.toggleIssueModal = this.toggleIssueModal.bind(this);
     this.toggleModal = this.toggleModal.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
     }
 
-    // componentDidMount
-
-    // updateProject = e => {
-    //     e.preventDefault();
-    //     this.toggleModal();
-    //     const newProject = {
-    //         name: this.state.name,
-    //         description: this.state.description,
-    //     }
-    //     console.log(newProject);
-    //     axios.put('api/projects/updateProject/{this.props.location.state.id', newProject).then(res => {
-    //         console.log(`Details of the project have been updated`);
-
-    //     })
-
-    // }
-
+    
     deleteProject(e) {
         e.preventDefault();
         axios.delete(`${API}/projects/deleteProject/${this.props.location.state.id}`).then(res => {
@@ -77,14 +59,6 @@ class Project extends Component {
             isModalOpen: !this.state.isModalOpen
         });
     }
-
-    toggleIssueModal() {
-        this.setState({
-            isIssueModalOpen: !this.state.isIssueModalOpen
-        });
-    }
-
-
 
     onLogoutClick = e => {
         e.preventDefault();
@@ -157,7 +131,7 @@ class Project extends Component {
                         <Button color="secondary" onClick={this.toggleModal}>Cancel</Button>
                     </ModalFooter>
                 </Modal>
-                <IssueModal pid={this.props.location.state.id} cid={this.props.location.state.creator} isModalOpen={this.state.isIssueModalOpen} toggleModal={this.toggleIssueModal}></IssueModal>
+                <IssueTable pid={this.props.location.state.id}></IssueTable>
             </div>
         );
     }
