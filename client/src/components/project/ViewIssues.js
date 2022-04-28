@@ -5,7 +5,7 @@ import { logoutUser } from "../../actions/authActions";
 import { Button, Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'reactstrap'
 import classnames from "classnames";
 import axios from "axios";
-import IssueModal from './IssueModal'
+import IssueTable from './IssueTable'
 import { API } from "../../config"
 import "./Card.css"
 
