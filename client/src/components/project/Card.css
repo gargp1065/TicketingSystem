@@ -1,0 +1,12 @@
+.card {
+    box-shadow: 0 4px 8px 0 rgba(8, 8, 8, 0.2);
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+    border-radius: 7px !important;
+    border-color: #eee;
+    margin-top: 90px;
+    margin-left:65px;
+    margin-right:65px
+  }
+  

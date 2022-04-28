@@ -25,6 +25,7 @@ class Project extends Component {
     this.onSubmit = this.onSubmit.bind(this);
     this.onChange = this.onChange.bind(this);
     this.deleteProject = this.deleteProject.bind(this);
+    this.viewIssues = this.viewIssues.bind(this);
     }
 
     
@@ -34,6 +35,11 @@ class Project extends Component {
             alert("Project deleted");
             this.props.history.push('/dashboard');
         }).catch(err => alert("Error in deleting"));
+    }
+
+    viewIssues(e) {
+        this.props.history.push({
+            pathname: 'issues', state: {id: this.props.location.state.id, name: this.props.location.state.name, description: this.props.location.state.description, creator: this.props.auth.user.id}});
     }
 
     onSubmit(e) {
@@ -99,7 +105,7 @@ class Project extends Component {
                         <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.toggleModal}>Update Project</button>
                         {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.deleteProject}>Delete Project</button>
                         {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.toggleIssueModal}>Add Issue</button>
-                        {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" >View Issues</button>
+                        {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.viewIssues} >View Issues</button>
                 </div>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Update Project</ModalHeader>
