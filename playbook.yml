@@ -13,6 +13,9 @@
     - name: pull docker server image
       shell: docker pull gargp1065/majorproject:server2
 
+    - name: print directory
+      shell: echo $PWD
+      
     - name: docker-compose up
       shell: docker-compose -f docker-compose.yml up 
 
