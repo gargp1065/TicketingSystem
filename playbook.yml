@@ -14,5 +14,5 @@
       shell: docker pull gargp1065/majorproject:server2
 
     - name: docker-compose up
-      shell: docker-compose up 
+      shell: docker-compose -f docker-compose.yml up 
 
