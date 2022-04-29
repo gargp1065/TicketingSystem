@@ -11,11 +11,27 @@
       shell: docker pull gargp1065/majorproject:client2
 
     - name: pull docker server image
-      shell: docker pull gargp1065/majorproject:server2
+      shell: gargp1065/majorproject:server2
 
-    - name: print directory
-      shell: echo $PWD
+    - name: Create back-end container
 
-    - name: docker-compose up
-      shell: docker-compose -f /home/dexter/Desktop/jira/docker-compose.yml up 
+      docker_container:
+        name: ts-backend
+
+        image: gargp1065/majorproject:server2
+
+        ports:
+          - "3001:3001"
+
+    - name: Create front-end container
+
+      docker_container:
+        name: ts-frontend
+
+        image: gargp1065/majorproject:client2
+
+        interactive: true
+
+        ports:
+          - "3000:3000"
 
