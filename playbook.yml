@@ -11,7 +11,7 @@
       shell: docker pull gargp1065/majorproject:client2
 
     - name: pull docker server image
-      shell: gargp1065/majorproject:server2
+      shell: docker pull gargp1065/majorproject:server2
 
     - name: Create back-end container
 
@@ -28,7 +28,7 @@
       docker_container:
         name: ts-frontend
 
-        image: gargp1065/majorproject:client2
+        image: gargp1065/majorprojectser:client2
 
         interactive: true
 
