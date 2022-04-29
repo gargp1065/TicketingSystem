@@ -12,3 +12,6 @@
 
     - name: pull docker server image
       shell: docker pull gargp1065/majorproject:server2
+     
+    - name: running docker compose file
+    - shell: docker-compose up 
