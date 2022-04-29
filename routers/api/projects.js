@@ -7,7 +7,7 @@ const Project = require('../../models/project');
 const mongoose = require('mongoose')
 const { countDocuments } = require('../../models/user');
 require('../../passport')(passport)
-
+const logger = require('../../logger')
 
 
 
@@ -33,6 +33,7 @@ router.get('/getAll', passport.authenticate('jwt', {session: false}), (req, res,
     Project.find()
     .then((projects) => {
         // console.log(projects);
+        logger.info(`All projects`);
         res.json(projects);
     })
     .catch(err => console.log(err));
@@ -53,6 +54,7 @@ router.post('/createProject', passport.authenticate('jwt', {session:false}), (re
     });
     newProject.save()
     .then((project) => {
+        logger.info("New project created");
         res.json(project)
     }).catch(err => console.log(err));
 });
@@ -63,7 +65,7 @@ router.get('/detailProject/:projectId', passport.authenticate('jwt', {session: f
     Project.findById(projectId)
     .then((project) => {
         console.log(project)
-        
+        logger.info("Details of a project")
         return res.status(200).json({project: project});
     })
     .catch(err => console.log(err));
@@ -77,6 +79,7 @@ router.delete('/deleteProject/:projectId', passport.authenticate('jwt', {session
 
     Project.findByIdAndDelete(projectId)
     .then((project) => {
+        logger.info("Project deleted");
         res.status(200).json({msg: "Project deleted"});
     })
     .catch(err => console.log(err));
@@ -104,6 +107,7 @@ router.put('/updateProject/:projectId', passport.authenticate('jwt', {session: f
         else {
             Project.findByIdAndUpdate(projectId, { $set: {name, description } })
             .then((project) => {
+                logger.info("Project details updated");
                 return res.status(200).json({msg: "The details have been updated"});
             }).catch(err => console.log(err));
         }

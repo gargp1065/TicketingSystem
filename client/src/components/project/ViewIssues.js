@@ -25,23 +25,7 @@ class ViewIssues extends Component {
     this.onChange = this.onChange.bind(this);
     }
 
-    // componentDidMount
-
-    // updateProject = e => {
-    //     e.preventDefault();
-    //     this.toggleModal();
-    //     const newProject = {
-    //         name: this.state.name,
-    //         description: this.state.description,
-    //     }
-    //     console.log(newProject);
-    //     axios.put('api/projects/updateProject/{this.props.location.state.id', newProject).then(res => {
-    //         console.log(`Details of the project have been updated`);
-
-    //     })
-
-    // }
-
+  
     componentDidMount() {
         axios.get(`${API}/issues/getAll`).then(res => {
             this.setState({

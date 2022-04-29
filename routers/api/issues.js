@@ -3,6 +3,9 @@ const router = express.Router();
 const Issue = require('../../models/issue');
 const jwt_decode = require('jwt-decode');
 const passport = require('passport');
+
+const logger = require('../../logger');
+
 // Get a list of Issues.
 // g. Get details of an Issue.
 // h. Create an Issue.
@@ -20,6 +23,7 @@ const passport = require('passport');
 router.get('/getAll', passport.authenticate('jwt', {session:false}), (req, res, next) => {
     Issue.find({})
     .then((issues) => {
+        logger.info('All issues fetched');
         return res.status(200).json(issues);
     })
     .catch(err => console.log(err));
@@ -30,8 +34,11 @@ router.get('/detailIssue/:issueId', passport.authenticate('jwt', {session: false
     const issueId = req.params.issueId;
     Issue.findById(issueId)
     .then((issue)=> {
-        if(issue != null)
+        if(issue != null) {
+            logger.info(`Details of issue with id ${issueId}`)
             return res.status(200).json(issue);
+        }
+            
         else return res.status(404).json({msg: "No issue with this id"});
     }).catch(err => console.log(err));
 })
@@ -52,11 +59,24 @@ router.post('/createIssue', passport.authenticate('jwt', {session: false}), (req
         status: req.body.status
     });
     newIssue.save()
-    .then((issue) => res.status(200).json(issue))
+    .then((issue) => {
+        logger.info('Issue created');
+        res.status(200).json(issue)})
     .catch(err => alert(err));
 })
 
-// //update an issue
+//get all issues for a project
+router.get('/projectIssues/:projectId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const projectId = req.params.projectId;
+    Issue.find({projectId: projectId})
+    .then((issues) => {
+        logger.info('Issues of a particular project');
+        return res.status(200).json(issues);
+
+    }).catch(err => alert("Error in getting details"))
+});
+
+//update an issue
 // router.put('/updateIssue/:issueId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
 //     const 
 // });
@@ -68,8 +88,11 @@ router.delete('/deleteIssue/:issueId', passport.authenticate('jwt', {session: fa
     const issueId = req.params.issueId;
     Issue.findByIdAndRemove(issueId)
     .then((issue)=> {
-        if(issue != null)
+        if(issue != null) {
+            logger.info("Issue deleted");
             return res.status(200).json({msg: "Issue deleted"});
+        }
+            
         else return res.status(400).json({msg: "Issue doesnt existed"});
     }).catch(err => console.log(err))
 });

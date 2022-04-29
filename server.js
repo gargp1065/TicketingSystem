@@ -5,6 +5,7 @@ const users = require("./routers/api/users");
 const projects = require('./routers/api/projects');
 const issues = require('./routers/api/issues');
 const cors = require('cors');
+const logger = require('./logger');
 const app = express();
 const corsOpts = {
     origin: '*',
@@ -28,4 +29,4 @@ mongoose
 app.use("/api/users", users);
 app.use("/api/projects", projects);
 app.use("/api/issues", issues);
-app.listen(port, ()=> console.log(`Server is running ${port}`));
+app.listen(port, ()=> logger.info(`Server is running ${port}`));
