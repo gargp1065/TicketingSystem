@@ -28,7 +28,7 @@
       docker_container:
         name: ts-frontend
 
-        image: gargp1065/majorprojectser:client2
+        image: gargp1065/majorproject:client2
 
         interactive: true
 
