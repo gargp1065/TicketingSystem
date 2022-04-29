@@ -1,14 +1,14 @@
 version: "3"
 services:
   react-app:
-    image: client:latest
+    image: gargp1065/majorproject:client2
     stdin_open: true
     ports:
       - "3000:3000"
     networks:
       - mern-app
   api-server:
-    image: server:latest
+    image: gargp1065/majorproject:server2
     ports:
       - "3001:3001"
     networks:

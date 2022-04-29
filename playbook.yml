@@ -1,5 +1,5 @@
 ---
-- name: Pull docker image of Front-end
+- name: Pull docker image
   hosts: all
   tasks:
     - name: Start docker service
@@ -13,4 +13,6 @@
     - name: pull docker server image
       shell: docker pull gargp1065/majorproject:server2
 
+    - name: docker-compose up
+      shell: docker-compose up 
 
