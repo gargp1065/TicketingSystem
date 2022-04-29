@@ -15,7 +15,7 @@
 
     - name: print directory
       shell: echo $PWD
-      
+
     - name: docker-compose up
-      shell: docker-compose -f docker-compose.yml up 
+      shell: docker-compose -f /home/dexter/Desktop/jira/docker-compose.yml up 
 
