@@ -1,9 +1,10 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
+import background from '../../public/frontPage.png'
 class Landing extends Component {
   render() {
     return (
-      <div style={{ height: "75vh" }} className="valign-wrapper">
+      <div style={{ height: "90vh", widht: "100vh", backgroundImage: `url(${background})`, backgroundRepeat: "round"}} className="valign-wrapper">
         <div className = "container">
         <div className="row">
           <div className="col s12 center-align">
@@ -20,25 +21,24 @@ class Landing extends Component {
             <div className="col s6">
               <Link
                 to="/register"
-                style={{
-                  width: "140px",
-                  borderRadius: "3px",
-                  letterSpacing: "1.5px"
-                }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large waves-effect waves-light hoverable accent-3" style={{backgroundColor: 'burlywood', width: "140px",
+                borderRadius: "3px",
+                letterSpacing: "1.5px", marginTop: "1rem"}}
               >
                 Register
               </Link>
             </div>
-            <div className="col s6">
+            <div className="col s6" style={{paddingLeft: '11.25px'}}>
               <Link
                 to="/login"
                 style={{
                   width: "140px",
                   borderRadius: "3px",
-                  letterSpacing: "1.5px"
+                  letterSpacing: "1.5px", 
+                  marginTop: "1rem",
+                  backgroundColor: "burlywood"
                 }}
-                className="btn btn-large waves-effect waves-light hoverable blue accent-3"
+                className="btn btn-large btn-flat waves-effect hoverable accent-3"
               >
                 Log In
               </Link>

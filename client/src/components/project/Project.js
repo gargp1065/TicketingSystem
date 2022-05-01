@@ -15,20 +15,20 @@ class Project extends Component {
         super(props);
         console.log(this.props);
         this.state = {
-            name: this.props.location.state.name, 
+            name: this.props.location.state.name,
             description: this.props.location.state.description,
             project: [],
             isModalOpen: false,
         }
-    this.onLogoutClick = this.onLogoutClick.bind(this);
-    this.toggleModal = this.toggleModal.bind(this);
-    this.onSubmit = this.onSubmit.bind(this);
-    this.onChange = this.onChange.bind(this);
-    this.deleteProject = this.deleteProject.bind(this);
-    this.viewIssues = this.viewIssues.bind(this);
+        this.onLogoutClick = this.onLogoutClick.bind(this);
+        this.toggleModal = this.toggleModal.bind(this);
+        this.onSubmit = this.onSubmit.bind(this);
+        this.onChange = this.onChange.bind(this);
+        this.deleteProject = this.deleteProject.bind(this);
+        this.viewIssues = this.viewIssues.bind(this);
     }
 
-    
+
     deleteProject(e) {
         e.preventDefault();
         axios.delete(`${API}/projects/deleteProject/${this.props.location.state.id}`).then(res => {
@@ -39,7 +39,8 @@ class Project extends Component {
 
     viewIssues(e) {
         this.props.history.push({
-            pathname: 'issues', state: {id: this.props.location.state.id, name: this.props.location.state.name, description: this.props.location.state.description, creator: this.props.auth.user.id}});
+            pathname: 'issues', state: { id: this.props.location.state.id, name: this.props.location.state.name, description: this.props.location.state.description, creator: this.props.auth.user.id }
+        });
     }
 
     onSubmit(e) {
@@ -47,7 +48,7 @@ class Project extends Component {
         this.toggleModal();
         const updatedProject = {
             name: this.state.name,
-            description: this.state.description 
+            description: this.state.description
         }
         console.log(updatedProject)
         const id = this.props.location.state.id;
@@ -77,35 +78,22 @@ class Project extends Component {
     render() {
         const { user } = this.props.auth;
         return (
-            <div style={{ height: "75vh"}} className="Container">
-                <div className="row">
-                    <div className="col s12 center-align">
-                        <button
-                            style={{
-                                width: "150px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                marginTop: "1rem"
-                            }}
-                            onClick={this.onLogoutClick}
-                            className="btn btn-large waves-effect waves-light hoverable dark blue accent-4"
-                        >
-                            Logout
-                        </button>
-                    </div>
+            <div className="container">
+
+                <div className="details" style={{
+                    maxWidth: "800px",
+                    margin: "auto",
+                    fontFamily: "arial",
+                    marginTop: "30px"
+                }}>
+                    <h2 style={{ textAlign: "center" }}>{this.state.name} </h2>
+                    <p style={{ fontSize: "25px" }}>{this.state.description}</p>
+
                 </div>
-                <div className ="details" style={{  
-                              /*  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", */
-                                maxWidth: "800px",
-                                margin: "auto",
-                                fontFamily: "arial"
-                            }}>
-                    <h3 style={{textAlign:"center"}}>{this.state.name} </h3>
-                    <p className="grey-text text-darken-1" style={{fontSize:"22px"}}>{this.state.description}</p>
-                        <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.toggleModal}>Update Project</button>
-                        {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.deleteProject}>Delete Project</button>
-                        {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.toggleIssueModal}>Add Issue</button>
-                        {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" onClick={this.viewIssues} >View Issues</button>
+                <div style={{textAlign: "center", marginTop: "30px"}}>
+                    <button className="btn btn-small waves-effect waves-light hoverable dark accent-4" onClick={this.toggleModal}>Update Project</button>
+                    {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark accent-4" onClick={this.deleteProject}>Delete Project</button>
+                    {'\u00A0'} <button className="btn btn-small waves-effect waves-light hoverable dark accent-4" onClick={this.viewIssues} >View Issues</button>
                 </div>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Update Project</ModalHeader>
@@ -138,6 +126,8 @@ class Project extends Component {
                     </ModalFooter>
                 </Modal>
                 <IssueTable pid={this.props.location.state.id}></IssueTable>
+                
+                
             </div>
         );
     }
