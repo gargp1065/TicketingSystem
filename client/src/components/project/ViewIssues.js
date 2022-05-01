@@ -7,7 +7,7 @@ import classnames from "classnames";
 import axios from "axios";
 import IssueTable from './IssueTable'
 import { API } from "../../config"
-import "./Card.css"
+import background from '../../public/bug3.jpg'
 
 
 class ViewIssues extends Component {
@@ -75,24 +75,25 @@ class ViewIssues extends Component {
                 <div className="row">
                     {this.state.issues.map(({_id,title, issueType, status, description}, index) => (
                     <div className="col-sm-4">
-                        <div className="card">
+                        <div className="card blue-grey darken-1 img-fluid" style={{backgroundImage: `url(${background})`, backgroundSize: "cover"}}>
+                            
                             <div className="card-body">
-                            <h1 style={{
+                            <h1 className = "text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Title: {title}</h1>
-                            <h4 className="card-text" style={{
+                            <h4 className="card-text text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Type: {issueType}</h4>
-                            <h4 className="card-text" style={{
+                            <h4 className="card-text text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Status: {status}</h4>
-                            <p className="card-text" style={{
+                            <p className="card-text text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
