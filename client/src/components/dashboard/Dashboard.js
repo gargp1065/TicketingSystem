@@ -65,12 +65,16 @@ class Dashboard extends Component {
         console.log(this.props.auth)
         return (
             <div className="container">
-                <p> Welcome {user.name}</p>
-                <button className="btn btn-dark"
-                    onClick={this.toggleModal}
-                >
-                    Create Project
-                </button>
+                <div style={{textAlign:"center", marginTop:"25px", fontSize:"30px", marginBottom: "35px"}}><p> Welcome {user.name}</p></div>
+                
+                <div style={{marginBottom: "15px"}}>
+                    <button className="btn btn-dark"
+                        onClick={this.toggleModal}
+                    >
+                        Create Project
+                    </button>
+
+                </div>
                 <Modal isOpen={this.state.isModalOpen} toggle={this.toggleModal}>
                     <ModalHeader toggle={this.toggleModal}>Create Project</ModalHeader>
                     <ModalBody>
@@ -108,7 +112,7 @@ class Dashboard extends Component {
                             <th>#</th>
                             <th>Project Name</th>
                             <th>Description</th>
-                            <th>Creator</th>
+                            <th>More</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -117,7 +121,7 @@ class Dashboard extends Component {
                                 <th scope="row">{index + 1}</th>
                                 <td>{name}</td>
                                 <td>{description}</td>
-                                <td><Link to={{pathname: 'project', state: {id: _id, name: name, description: description, creator: this.props.auth.user.id}}}>Link to project</Link></td>
+                                <td><Link to={{pathname: 'project', state: {id: _id, name: name, description: description, creator: this.props.auth.user.id}}}><p>Details</p></Link></td>
                                 
                             </tr>
                         )

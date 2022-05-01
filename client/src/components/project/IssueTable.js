@@ -62,28 +62,34 @@ class IssueTable extends Component {
     }
     render() {
         return (
-            <div className='container'>
+            <div style={{margin: "auto", marginTop: "55px", maxWidth:"800px"}}>
 
                 <form onSubmit={this.onSubmit}>
-                    <label htmlFor="title">Issue Name</label>
+                    <div className="input-field">
+                    
                     <input
                         type="text"
-                        className={classnames("form-control form-control-sm")}
-                        placeholder="title"
+                        // className={classnames("form-control form-control-sm")}
+                        // placeholder="title"
                         name="title"
                         value={this.state.title}
                         onChange={this.onChange}
                     />
-                    <label htmlFor="description">Issue Description</label>
-                    <input
-                        type="text"
-                        className={classnames("form-control form-control-sm")}
-                        placeholder="description"
-                        name="description"
-                        value={this.state.description}
-                        onChange={this.onChange}
-                    />
-
+                    <label htmlFor="title">Issue Name</label>
+                    </div>
+                    <div className="input-field">
+                    
+                        <input
+                            type="text"
+                            className={classnames("form-control form-control-sm")}
+                            // placeholder="description"
+                            name="description"
+                            value={this.state.description}
+                            onChange={this.onChange}
+                        />
+                        <label htmlFor="description">Issue Description</label>
+                    </div>
+                    <div>
                     <label htmlFor="issueType">Choose the type</label>
                     <select
                         type="text"
@@ -99,17 +105,20 @@ class IssueTable extends Component {
                         <option value="bug">Bug</option>
                         <option value="task">Task</option>
                     </select>
-
-                    <select 
-                        type="text"
-                        className={classnames("form-control form-control-lg")}
-                        placeholder="assignee"
-                        name="assignee"
-                        onChange={this.onChange}
-                    >
-                        <option value>Select Assignee</option>
-                        {this.state.userList.map((user) => <option key={user._id}value={user._id}>{user.name}</option>)}
-                    </select>
+                    </div>
+                    <div>
+                    <label htmlFor="assignee">Choose the Assignee</label>
+                        <select 
+                            type="text"
+                            className={classnames("form-control form-control-lg")}
+                            placeholder="assignee"
+                            name="assignee"
+                            onChange={this.onChange}
+                        >
+                            <option value>Select Assignee</option>
+                            {this.state.userList.map((user) => <option key={user._id}value={user._id}>{user.name}</option>)}
+                        </select>
+                    </div>
                     <input type="submit" className="btn btn-info btn-block mt-4" value="Add Issue" />
                 </form>
 

@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import { logoutUser } from "../../actions/authActions";
 import { Button, Modal, ModalHeader, ModalBody, Table, ModalFooter } from 'reactstrap'
 import classnames from "classnames";
 import axios from "axios";
 import IssueTable from './IssueTable'
 import { API } from "../../config"
+import background from "../../public/bug.jpg"
 import "./Card.css"
 
 
@@ -21,7 +21,6 @@ class ViewIssues extends Component {
             project: [],
             issues: []
         }
-    this.onLogoutClick = this.onLogoutClick.bind(this);
     this.onChange = this.onChange.bind(this);
     }
 
@@ -34,11 +33,6 @@ class ViewIssues extends Component {
         }).catch(err => console.log("Error in data fetching"));
     }
 
-    onLogoutClick = e => {
-        e.preventDefault();
-        console.log("error")
-        this.props.logoutUser();
-    };
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
@@ -46,36 +40,23 @@ class ViewIssues extends Component {
         const { user } = this.props.auth;
         return (
             <div style={{ height: "75vh"}} className="Container">
-                <div className="row">
-                    <div className="col s12 center-align">
-                        <button
-                            style={{
-                                width: "150px",
-                                borderRadius: "3px",
-                                letterSpacing: "1.5px",
-                                marginTop: "1rem"
-                            }}
-                            onClick={this.onLogoutClick}
-                            className="btn btn-large waves-effect waves-light hoverable dark blue accent-4"
-                        >
-                            Logout
-                        </button>
-                    </div>
-                </div>
-                <div className ="details" style={{  
-                              /*  boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.2)", */
-                                maxWidth: "800px",
-                                margin: "auto",
-                                fontFamily: "arial"
-                            }}>
-                    <h3 style={{textAlign:"center"}}>{this.state.name} </h3>
-                    <p className="grey-text text-darken-1" style={{fontSize:"22px"}}>{this.state.description}</p>
+                
+                <div className="details" style={{
+                    maxWidth: "800px",
+                    margin: "auto",
+                    fontFamily: "arial",
+                    marginTop: "30px"
+                }}>
+                    <h2 style={{ textAlign: "center" }}>{this.state.name} </h2>
+                    <p style={{ fontSize: "25px" }}>{this.state.description}</p>
+
                 </div>
 
                 <div className="row">
                     {this.state.issues.map(({_id,title, issueType, status, description}, index) => (
                     <div className="col-sm-4">
-                        <div className="card">
+                        <div className="card" style={{backgroundImage: `url(${background})`, backgroundSize: "300px", backgroundRepeat: 'no-repeat'}}>
+                            
                             <div className="card-body">
                             <h1 style={{
                                 borderRadius: "3px",
@@ -121,7 +102,6 @@ class ViewIssues extends Component {
     }
 }
 ViewIssues.propTypes = {
-    logoutUser: PropTypes.func.isRequired,
     auth: PropTypes.object.isRequired
 };
 const mapStateToProps = state => ({
@@ -129,5 +109,4 @@ const mapStateToProps = state => ({
 });
 export default connect(
     mapStateToProps,
-    { logoutUser }
 )(ViewIssues);

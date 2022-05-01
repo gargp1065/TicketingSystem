@@ -20,7 +20,7 @@ class Navbar extends Component {
     return (
       <div className="navbar-fixed">
         <nav className="z-depth-0">
-          <div className="nav-wrapper dark" style={{ backgroundColor: "darkgray" }}>
+          <div className="nav-wrapper dark" style={{ backgroundColor: "teal" }}>
             <Link
               to="/"
               style={{
@@ -33,11 +33,12 @@ class Navbar extends Component {
             </Link>
             <div style={{ marginLeft: "80%" }}>
               <Link to="profile">
-                {this.props.auth.isAuthenticated && <button type="button" className="btn  hoverable light blue accent-5"
+                {this.props.auth.isAuthenticated && <button type="button" className="btn btn-dark hoverable light accent-5"
                   style={{
                     width: "120px",
                     borderRadius: "3px",
                     letterSpacing: "1.5px",
+                    backgroundColor: "black"
                     // marginLeft: "40%"
                   }}>
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-person" viewBox="0 0 16 16">
@@ -53,7 +54,7 @@ class Navbar extends Component {
                 marginLeft: "10px"
               }}
                 onClick={this.onLogoutClick}
-                className="btn btn-medium waves-effect waves-light hoverable light blue accent-5">Logout
+                className="btn btn-dark hoverable light accent-5">Logout
               </button>}
             </div>
           </div>
