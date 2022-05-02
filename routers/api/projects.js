@@ -39,6 +39,21 @@ router.get('/getAll', passport.authenticate('jwt', {session: false}), (req, res,
     .catch(err => console.log(err));
 });
 
+//get projects for a user
+router.get('/getProject/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const userId = req.params.id;
+    Project.find({creator: userId}).then(projects => {
+        if(projects != null) {
+            logger.info('Projects for a user');
+            return res.status(200).json(projects);
+        }
+        else {
+            logger.info('no project');
+            return res.status(200).json({msg : "No project"});
+        }
+    }).catch(err => console.log(err));
+
+})
 
 //create a project
 router.post('/createProject', passport.authenticate('jwt', {session:false}), (req, res, next) => {
