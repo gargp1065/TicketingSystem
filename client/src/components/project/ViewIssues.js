@@ -17,6 +17,7 @@ class ViewIssues extends Component {
         console.log(this.props);
         this.state = {
             name: this.props.location.state.name, 
+            id: this.props.location.state.id,
             description: this.props.location.state.description,
             project: [],
             issues: []
@@ -26,7 +27,7 @@ class ViewIssues extends Component {
 
   
     componentDidMount() {
-        axios.get(`${API}/issues/getAll`).then(res => {
+        axios.get(`${API}/issues/getProjectIssue/${this.state.id}`).then(res => {
             this.setState({
                 issues: res.data
             })
