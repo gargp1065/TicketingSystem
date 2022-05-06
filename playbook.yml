@@ -12,7 +12,10 @@
 
     - name: pull docker server image
       shell: docker pull gargp1065/majorproject:server2
-
+      
+    - name: current working directory
+      shell: echo $PWD
+      
     - name: running docker compose file
       shell: docker-compose -f /var/lib/jenkins/workpspace/MajorProject/docker-compose.yml up -d  
          
