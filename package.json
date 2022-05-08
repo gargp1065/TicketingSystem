@@ -9,7 +9,7 @@
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run server\" \"npm run client\"",
-    "test": "mocha 'tests/userTest.js'"
+    "test": "mocha --exit 'tests/userTest.js'"
   },
   "author": "Pranjal",
   "license": "ISC",

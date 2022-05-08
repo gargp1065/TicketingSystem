@@ -940,3 +940,57 @@
 2022-05-08 16:39:18:3918 info: Server is running 3001
 2022-05-08 16:39:19:3919 info: Issues for a project
 2022-05-08 16:39:26:3926 info: Server is running 3001
+2022-05-08 17:06:07:67 info: User already exists
+2022-05-08 17:06:07:67 info: Successfull login by hello@gmail.com
+2022-05-08 17:07:01:71 info: Server is running 3001
+2022-05-08 17:07:02:72 info: User already exists
+2022-05-08 17:07:02:72 info: Successfull login by hello@gmail.com
+2022-05-08 17:07:19:719 info: Server is running 3001
+2022-05-08 17:07:20:720 info: User already exists
+2022-05-08 17:07:20:720 info: Successfull login by hello@gmail.com
+2022-05-08 17:07:39:739 info: Server is running 3001
+2022-05-08 17:07:40:740 info: User already exists
+2022-05-08 17:07:40:740 info: Successfull login by hello@gmail.com
+2022-05-08 17:09:13:913 info: Server is running 3001
+2022-05-08 17:09:15:915 info: User already exists
+2022-05-08 17:09:15:915 info: Successfull login by hello@gmail.com
+2022-05-08 17:09:31:931 info: Server is running 3001
+2022-05-08 17:09:31:931 info: User already exists
+2022-05-08 17:09:32:932 info: Successfull login by hello@gmail.com
+2022-05-08 17:14:16:1416 info: Server is running 3001
+2022-05-08 17:14:33:1433 info: Server is running 3001
+2022-05-08 17:14:34:1434 info: User already exists
+2022-05-08 17:14:34:1434 info: Successfull login by hello@gmail.com
+2022-05-08 17:19:06:196 info: Server is running 3001
+2022-05-08 17:19:08:198 info: User already exists
+2022-05-08 17:19:08:198 info: Successfull login by hello@gmail.com
+2022-05-08 17:19:32:1932 info: Server is running 3001
+2022-05-08 17:19:33:1933 info: User already exists
+2022-05-08 17:19:33:1933 info: Successfull login by hello@gmail.com
+2022-05-08 17:20:30:2030 info: Server is running 3001
+2022-05-08 17:20:31:2031 info: User already exists
+2022-05-08 17:20:31:2031 info: Successfull login by hello@gmail.com
+2022-05-08 17:20:56:2056 info: Server is running 3001
+2022-05-08 17:20:57:2057 info: User already exists
+2022-05-08 17:20:57:2057 info: Successfull login by hello@gmail.com
+2022-05-08 17:24:13:2413 info: Server is running 3001
+2022-05-08 17:24:14:2414 info: User already exists
+2022-05-08 17:24:15:2415 info: Successfull login by hello@gmail.com
+2022-05-08 17:24:36:2436 info: Server is running 3001
+2022-05-08 17:24:37:2437 info: User already exists
+2022-05-08 17:24:37:2437 info: Successfull login by hello@gmail.com
+2022-05-08 17:25:40:2540 info: Server is running 3001
+2022-05-08 17:25:42:2542 info: User already exists
+2022-05-08 17:25:42:2542 info: Successfull login by hello@gmail.com
+2022-05-08 17:26:01:261 info: Server is running 3001
+2022-05-08 17:26:02:262 info: User already exists
+2022-05-08 17:26:02:262 info: Successfull login by hello@gmail.com
+2022-05-08 17:26:26:2626 info: Server is running 3001
+2022-05-08 17:26:27:2627 info: User already exists
+2022-05-08 17:26:27:2627 info: Successfull login by hello@gmail.com
+2022-05-08 17:27:04:274 info: Server is running 3001
+2022-05-08 17:27:05:275 info: User already exists
+2022-05-08 17:27:05:275 info: Successfull login by hello@gmail.com
+2022-05-08 17:28:07:287 info: Server is running 3001
+2022-05-08 17:28:08:288 info: User already exists
+2022-05-08 17:28:08:288 info: Successfull login by hello@gmail.com
