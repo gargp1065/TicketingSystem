@@ -18,12 +18,10 @@ class ViewIssues extends Component {
         super(props);
         console.log(this.props);
         this.state = {
-<<<<<<< HEAD
-=======
-            name: this.props.location.state.name, 
             id: this.props.location.state.id,
+            name: this.props.location.state.name,
             description: this.props.location.state.description,
->>>>>>> 2c6ea1f62215f2e3632543b8c61bf123f960a27e
+
             project: [],
             issues: []
         }
@@ -38,7 +36,9 @@ class ViewIssues extends Component {
             this.setState({
                 issues: res.data
             })
+            console.log(this.state.issues);
         }).catch(err => console.log("Error in data fetching"));
+        // console.log(this.state.issues);
     }
 
     onChange(e) {
@@ -81,25 +81,25 @@ class ViewIssues extends Component {
                 <div className="row">
                     {this.state.issues.map(({_id,title, issueType, status, description}, index) => (
                     <div className="col-sm-4">
-                        <div className="card" >
+                        <div className="card">
                             
                             <div className="card-body">
-                            <h1 className = "text-white" style={{
+                            <h1 style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Title: {title}</h1>
-                            <h4 className="card-text text-white" style={{
+                            <h4 className="card-text" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Type: {issueType}</h4>
-                            <h4 className="card-text text-white" style={{
+                            <h4 className="card-text" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Status: {status}</h4>
-                            <p className="card-text text-white" style={{
+                            <p className="card-text " style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"

@@ -51,6 +51,7 @@ router.get('/getProjectIssue/:projectId', passport.authenticate('jwt', {session:
     const projId = req.params.projectId;
     Issue.find({projectId: projId}).then(issues => {
         if(issues != null) {
+            console.log(issues);
             logger.info('Issues for a project');
             return res.status(200).json(issues);
         }

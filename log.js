@@ -854,3 +854,89 @@
 2022-05-02 12:57:54:5754 info: Issues for a user
 2022-05-02 12:57:54:5754 info: Projects for a user
 >>>>>>> 2c6ea1f62215f2e3632543b8c61bf123f960a27e
+2022-05-08 16:17:13:1713 info: Server is running 3001
+2022-05-08 16:18:07:187 info: Server is running 3001
+2022-05-08 16:18:34:1834 info: Server is running 3001
+2022-05-08 16:19:17:1917 info: Server is running 3001
+2022-05-08 16:19:24:1924 info: All projects
+2022-05-08 16:19:25:1925 info: List of all users
+2022-05-08 16:19:27:1927 info: Issues for a project
+2022-05-08 16:19:33:1933 info: Issues for a project
+2022-05-08 16:20:19:2019 info: Server is running 3001
+2022-05-08 16:20:21:2021 info: Issues for a project
+2022-05-08 16:20:23:2023 info: Issue deleted
+2022-05-08 16:20:29:2029 info: Issue status updated
+2022-05-08 16:20:31:2031 info: Issues for a project
+2022-05-08 16:20:38:2038 info: Issues for a project
+2022-05-08 16:21:09:219 info: no issue
+2022-05-08 16:21:09:219 info: Projects for a user
+2022-05-08 16:21:19:2119 info: Issues for a project
+2022-05-08 16:21:21:2121 info: List of all users
+2022-05-08 16:21:24:2124 info: All projects
+2022-05-08 16:21:27:2127 info: List of all users
+2022-05-08 16:21:28:2128 info: All projects
+2022-05-08 16:21:32:2132 info: List of all users
+2022-05-08 16:21:34:2134 info: no issue
+2022-05-08 16:21:34:2134 info: Projects for a user
+2022-05-08 16:21:39:2139 info: All projects
+2022-05-08 16:21:41:2141 info: List of all users
+2022-05-08 16:21:43:2143 info: Issues for a project
+2022-05-08 16:21:46:2146 info: no issue
+2022-05-08 16:21:46:2146 info: Projects for a user
+2022-05-08 16:21:52:2152 info: Projects for a user
+2022-05-08 16:21:52:2152 info: no issue
+2022-05-08 16:22:01:221 info: All projects
+2022-05-08 16:22:04:224 info: List of all users
+2022-05-08 16:22:12:2212 info: Issue created
+2022-05-08 16:22:15:2215 info: Issues for a user
+2022-05-08 16:22:15:2215 info: Projects for a user
+2022-05-08 16:22:21:2221 info: List of all users
+2022-05-08 16:22:23:2223 info: Project deleted
+2022-05-08 16:22:24:2224 info: All projects
+2022-05-08 16:22:30:2230 info: List of all users
+2022-05-08 16:22:32:2232 info: Issues for a project
+2022-05-08 16:22:35:2235 info: List of all users
+2022-05-08 16:22:46:2246 info: Issue created
+2022-05-08 16:22:49:2249 info: Issues for a project
+2022-05-08 16:23:39:2339 info: Server is running 3001
+2022-05-08 16:27:59:2759 info: Server is running 3001
+2022-05-08 16:28:10:2810 info: Projects for a user
+2022-05-08 16:28:10:2810 info: Issues for a user
+2022-05-08 16:28:13:2813 info: All projects
+2022-05-08 16:28:15:2815 info: List of all users
+2022-05-08 16:28:45:2845 info: List of all users
+2022-05-08 16:28:51:2851 info: Issue created
+2022-05-08 16:30:59:3059 info: Server is running 3001
+2022-05-08 16:31:05:315 info: List of all users
+2022-05-08 16:31:11:3111 info: List of all users
+2022-05-08 16:31:16:3116 info: Issue created
+2022-05-08 16:32:21:3221 info: Server is running 3001
+2022-05-08 16:32:23:3223 info: Server is running 3001
+2022-05-08 16:32:28:3228 info: Issues for a project
+2022-05-08 16:33:05:335 info: Server is running 3001
+2022-05-08 16:33:09:339 info: Issues for a project
+2022-05-08 16:33:53:3353 info: Server is running 3001
+2022-05-08 16:33:54:3354 info: Issues for a project
+2022-05-08 16:33:57:3357 info: Issues for a project
+2022-05-08 16:34:43:3443 info: List of all users
+2022-05-08 16:34:50:3450 info: Issue created
+2022-05-08 16:34:57:3457 info: Issues for a project
+2022-05-08 16:35:21:3521 info: Server is running 3001
+2022-05-08 16:35:25:3525 info: Issues for a project
+2022-05-08 16:36:15:3615 info: Server is running 3001
+2022-05-08 16:36:15:3615 info: Issues for a project
+2022-05-08 16:36:36:3636 info: Issues for a project
+2022-05-08 16:36:53:3653 info: Issue deleted
+2022-05-08 16:37:35:3735 info: Server is running 3001
+2022-05-08 16:37:36:3736 info: Issues for a project
+2022-05-08 16:37:37:3737 info: Issues for a project
+2022-05-08 16:38:00:380 info: Server is running 3001
+2022-05-08 16:38:01:381 info: Issues for a project
+2022-05-08 16:38:06:386 info: Issues for a project
+2022-05-08 16:38:44:3844 info: Server is running 3001
+2022-05-08 16:38:45:3845 info: Issues for a project
+2022-05-08 16:38:58:3858 info: Server is running 3001
+2022-05-08 16:39:03:393 info: Issues for a project
+2022-05-08 16:39:18:3918 info: Server is running 3001
+2022-05-08 16:39:19:3919 info: Issues for a project
+2022-05-08 16:39:26:3926 info: Server is running 3001

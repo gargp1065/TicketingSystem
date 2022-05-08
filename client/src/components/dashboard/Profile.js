@@ -41,10 +41,6 @@ class Profile extends Component {
     render() {
         return (
             <div className="container">
-<<<<<<< HEAD
-
-            </div>
-=======
             <div className="main-body">
     
           <div className="row gutters-sm">
@@ -161,7 +157,6 @@ class Profile extends Component {
 
         </div>
     </div>
->>>>>>> 2c6ea1f62215f2e3632543b8c61bf123f960a27e
         )
     }
 }
