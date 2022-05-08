@@ -21,9 +21,6 @@ class Landing extends Component {
             <div className="col s6">
               <Link
                 to="/register"
-                style={{
-                  
-                }}
                 className="btn btn-large waves-effect waves-light hoverable accent-3" style={{backgroundColor: 'burlywood', width: "140px",
                 borderRadius: "3px",
                 letterSpacing: "1.5px", marginTop: "1rem"}}

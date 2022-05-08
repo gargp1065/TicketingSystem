@@ -18,6 +18,12 @@ class ViewIssues extends Component {
         super(props);
         console.log(this.props);
         this.state = {
+<<<<<<< HEAD
+=======
+            name: this.props.location.state.name, 
+            id: this.props.location.state.id,
+            description: this.props.location.state.description,
+>>>>>>> 2c6ea1f62215f2e3632543b8c61bf123f960a27e
             project: [],
             issues: []
         }
@@ -28,7 +34,7 @@ class ViewIssues extends Component {
     
   
     componentDidMount() {
-        axios.get(`${API}/issues/getAll`).then(res => {
+        axios.get(`${API}/issues/getProjectIssue/${this.state.id}`).then(res => {
             this.setState({
                 issues: res.data
             })
@@ -78,22 +84,22 @@ class ViewIssues extends Component {
                         <div className="card" >
                             
                             <div className="card-body">
-                            <h1 style={{
+                            <h1 className = "text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Title: {title}</h1>
-                            <h4 className="card-text" style={{
+                            <h4 className="card-text text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Type: {issueType}</h4>
-                            <h4 className="card-text" style={{
+                            <h4 className="card-text text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Status: {status}</h4>
-                            <p className="card-text" style={{
+                            <p className="card-text text-white" style={{
                                 borderRadius: "3px",
                                 marginTop: "1rem",
                                 marginBottom: "1rem"

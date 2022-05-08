@@ -19,7 +19,11 @@
     #   shell: docker pull gargp1065/majorproject:server2
 
     - name: lfdh
+<<<<<<< HEAD
       command: docekr-compose pull
+=======
+      command: docker-compose pull
+>>>>>>> 2c6ea1f62215f2e3632543b8c61bf123f960a27e
 
 
     - name: stop previous back-end container

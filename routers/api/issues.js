@@ -29,6 +29,38 @@ router.get('/getAll', passport.authenticate('jwt', {session:false}), (req, res, 
     .catch(err => console.log(err));
 })
 
+//get issues for a user
+router.get('/getIssue/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const userId = req.params.id;
+    console.log(userId);
+    Issue.find({assignee: userId}).then((issues) => {
+        if(issues.length != 0) {
+            console.log(issues);
+            logger.info('Issues for a user');
+            return res.status(200).json(issues);
+        }
+        else {
+            logger.info('no issue');
+            return res.status(200).json({msg : "No issues"});
+        }
+    }).catch(err => console.log(err));
+})
+
+//get all issue for a projet 
+router.get('/getProjectIssue/:projectId', passport.authenticate('jwt', {session:false}), (req, res, next) => {
+    const projId = req.params.projectId;
+    Issue.find({projectId: projId}).then(issues => {
+        if(issues != null) {
+            logger.info('Issues for a project');
+            return res.status(200).json(issues);
+        }
+        else {
+            logger.info('no issue');
+            return res.status(200).json({msg : "No issues"});
+        }
+    }).catch(err => console.log(err));
+})
+
 //get details of an issue
 router.get('/detailIssue/:issueId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     const issueId = req.params.issueId;
