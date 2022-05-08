@@ -14,6 +14,7 @@ import Dashboard from "./components/dashboard/Dashboard";
 import Project from "./components/project/Project"
 import ViewIssues from "./components/project/ViewIssues"
 import Profile from "./components/dashboard/Profile";
+import UpdateIssue from "./components/project/UpdateIssue"
 // Check for token to keep user logged in
 if (localStorage.jwtToken) {
   // Set auth token header auth
@@ -48,6 +49,7 @@ class App extends Component {
               <PrivateRoute exact path="/project" component={Project}/>
               <PrivateRoute exact path="/issues" component={ViewIssues}/>
               <PrivateRoute exact path="/profile" component={Profile} />
+              <PrivateRoute exact path="/updateIssue" component={UpdateIssue}/>
             </Switch>
           </div>
         </Router>

@@ -77,16 +77,40 @@ router.get('/projectIssues/:projectId', passport.authenticate('jwt', {session: f
 });
 
 //update an issue
-// router.put('/updateIssue/:issueId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
-//     const 
-// });
+router.put('/updateIssue/:issueId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const issueId = req.params.issueId;
+    const status = req.body.status;
+    console.log(status);
+    Issue.findByIdAndUpdate(issueId, {$set : {status}})
+    .then(issue => {
+        if(issue != null) {
+            logger.info("Issue status updated");
+            return res.status(200).json({msg : "Issue status have been changed"});
+        }
+        else return res.status(400).json({msg: "Error in updating status" });
+    })
+});
 
 
+
+//get all issues of a user
+router.get('/getIssue/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const userId = req.params.id;
+    Issue.find({assignee: userId}).then(issue => {
+        if(issue != null) {
+            logger.info('Issues for a user');
+            return res.status(200).json({msg : "Issues fetched"});
+        }
+        else return res.status(200).json({msg : "No issues"});
+    }).catch(err => console.log(err));
+
+});
 
 //delete an issue
 router.delete('/deleteIssue/:issueId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     const issueId = req.params.issueId;
-    Issue.findByIdAndRemove(issueId)
+    console.log(issueId);
+    Issue.findByIdAndDelete(issueId)
     .then((issue)=> {
         if(issue != null) {
             logger.info("Issue deleted");

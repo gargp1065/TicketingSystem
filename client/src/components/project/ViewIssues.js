@@ -8,6 +8,8 @@ import IssueTable from './IssueTable'
 import { API } from "../../config"
 import background from "../../public/bug.jpg"
 import "./Card.css"
+import { Link } from "react-router-dom";
+// import issue from "../../../../models/issue";
 
 
 class ViewIssues extends Component {
@@ -16,14 +18,14 @@ class ViewIssues extends Component {
         super(props);
         console.log(this.props);
         this.state = {
-            name: this.props.location.state.name, 
-            description: this.props.location.state.description,
             project: [],
             issues: []
         }
     this.onChange = this.onChange.bind(this);
+    this.deleteIssue = this.deleteIssue.bind(this);
     }
 
+    
   
     componentDidMount() {
         axios.get(`${API}/issues/getAll`).then(res => {
@@ -36,11 +38,29 @@ class ViewIssues extends Component {
     onChange(e) {
         this.setState({ [e.target.name]: e.target.value });
     }
+
+    deleteIssue(id) {
+        const issueId = id
+        axios.delete(`${API}/issues/deleteIssue/${issueId}`)
+        .then(res => {
+            alert("Issue has been deleted");
+            var allotIndex;
+            for(var i=0;i<this.state.issues.length;i++)
+            {
+                if(this.state.issues[i]._id === issueId)
+                    allotIndex = i;
+            }
+            this.setState({
+                issues: [...this.state.issues.slice(0, allotIndex), ...this.state.issues.slice(allotIndex + 1)]   
+            })
+        }).catch(err => console.log("Error in deleting issue"));
+    }
+
     render() {
         const { user } = this.props.auth;
         return (
             <div style={{ height: "75vh"}} className="Container">
-                
+
                 <div className="details" style={{
                     maxWidth: "800px",
                     margin: "auto",
@@ -55,7 +75,7 @@ class ViewIssues extends Component {
                 <div className="row">
                     {this.state.issues.map(({_id,title, issueType, status, description}, index) => (
                     <div className="col-sm-4">
-                        <div className="card" style={{backgroundImage: `url(${background})`, backgroundSize: "300px", backgroundRepeat: 'no-repeat'}}>
+                        <div className="card" >
                             
                             <div className="card-body">
                             <h1 style={{
@@ -78,18 +98,19 @@ class ViewIssues extends Component {
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Description: {description}</p>
-                            <p><button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" style={{
+                            <p><Link to={{pathname: '/updateIssue', state:{id: _id, status: status, projectId: this.props.location.state.id}}}><button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" style={{
                                 width: "170px",
                                 borderRadius: "3px",
                                 letterSpacing: "1.5px",
-                                marginTop: "1rem"
-                            }}>Update Status</button>
+                                marginTop: "1rem",
+                                // to="/updateIssue"
+                            }}>Update Status</button></Link>
                             {'\u00A0'}{'\u00A0'}<button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" style={{
                                 width: "170px",
                                 borderRadius: "3px",
                                 letterSpacing: "1.5px",
                                 marginTop: "1rem",
-                            }}>Delete Issue</button></p>
+                            }} onClick={() => this.deleteIssue(_id)}>Delete Issue</button></p>
                             </div>
                         </div>
                     </div>

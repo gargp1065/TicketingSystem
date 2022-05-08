@@ -52,7 +52,7 @@ router.post('/register', (req, res, next) => {
                 newUser.save()
                     .then((user) => {
                         logger.info("New user created");
-                        res.json(user)
+                        res.status(200).json(user)
                     })
                     .catch(err => console.log(err));
             })
@@ -89,7 +89,7 @@ router.post('/login', (req, res, next) => {
                 };
                 jwt.sign(payload, "secret", (err, token) => {
                     
-                    res.json( { success: true, token: "Bearer " + token });
+                    res.status(200).json( { success: true, token: "Bearer " + token });
                     
                 });
             }

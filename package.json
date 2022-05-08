@@ -8,7 +8,8 @@
     "start": "node server.js",
     "server": "nodemon server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client\""
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "test": "mocha 'tests/userTest.js'"
   },
   "author": "Pranjal",
   "license": "ISC",
@@ -28,9 +29,12 @@
     "winston": "^3.7.2"
   },
   "nodemonConfig": {
-    "ignore": ["log.js"]
+    "ignore": [
+      "log.js"
+    ]
   },
   "devDependencies": {
-    "nodemon": "^2.0.15"
+    "nodemon": "^2.0.15",
+    "supertest": "^6.2.3"
   }
 }
