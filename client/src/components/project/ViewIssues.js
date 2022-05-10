@@ -68,18 +68,20 @@ class ViewIssues extends Component {
             <div style={{ height: "75vh"}} className="Container">
 
                 <div className="details" style={{
+                    textAlign: "center",
                     maxWidth: "800px",
                     margin: "auto",
                     fontFamily: "arial",
                     marginTop: "30px"
                 }}>
-                    <h2 style={{ textAlign: "center" }}>{this.state.name} </h2>
-                    <p style={{ fontSize: "25px" }}>{this.state.description}</p>
+                    <p style={{fontSize: "25px"}}>Project Name: {this.state.name} </p>
+                    <p style={{ fontSize: "25px" }}>Project Decription: {this.state.description}</p>
 
                 </div>
 
                 <div className="row">
-                    {this.state.issues.map(({_id,title, issueType, status, description}, index) => (
+                    {this.state.issues.length == 0 ? (<div style={{textAlign:"center", marginTop:"25px", fontSize:"30px", marginBottom: "35px"}}><p>No issues created for this project.</p></div>): 
+                    this.state.issues.map(({_id,title, issueType, status, description}, index) => (
                     <div className="col-sm-4">
                         <div className="card">
                             
@@ -99,17 +101,11 @@ class ViewIssues extends Component {
                                 marginTop: "1rem",
                                 marginBottom: "1rem"
                             }}>Issue Status: {status}</h4>
-                            <p className="card-text " style={{
-                                borderRadius: "3px",
-                                marginTop: "1rem",
-                                marginBottom: "1rem"
-                            }}>Issue Description: {description}</p>
-                            <p><Link to={{pathname: '/updateIssue', state:{id: _id, status: status, projectId: this.props.location.state.id}}}><button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" style={{
+                            <p><Link to={{pathname: '/updateIssue', state:{id: _id, status: status}}}><button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" style={{
                                 width: "170px",
                                 borderRadius: "3px",
                                 letterSpacing: "1.5px",
                                 marginTop: "1rem",
-                                // to="/updateIssue"
                             }}>Update Status</button></Link>
                             {'\u00A0'}{'\u00A0'}<button className="btn btn-small waves-effect waves-light hoverable dark blue accent-4" style={{
                                 width: "170px",

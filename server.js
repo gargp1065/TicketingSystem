@@ -8,6 +8,9 @@ const cors = require('cors');
 const logger = require('./logger');
 const app = express();
 const {MONGO_URI} = require('./config')
+const morgan = require('morgan')
+const fs = require('fs')
+const path = require('path');
 const corsOpts = {
     origin: '*',
     credentials: true,
@@ -27,6 +30,10 @@ mongoose
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log(err));
     
+    const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+
+    // Setup the logger
+    app.use(morgan(':date[iso] :method :url :status :res[content-length] - :response-time ms', { stream: accessLogStream }))
 app.use("/api/users", users);
 app.use("/api/projects", projects);
 app.use("/api/issues", issues);

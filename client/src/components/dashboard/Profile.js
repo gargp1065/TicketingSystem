@@ -12,8 +12,6 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user: this.props.auth.user, 
-            // description: this.props.location.state.description,
             projects: [],
             issues: []
         }
@@ -27,7 +25,7 @@ class Profile extends Component {
     componentDidMount() {
         axios.get(`${API}/issues/getIssue/${this.props.auth.user.id}`).then(res => {
             this.setState({
-                issues: res.data.length == 0 ? [] : res.data
+                issues: res.data
             })
         }).catch(err => console.log("Error in data fetching"));
 
@@ -39,6 +37,7 @@ class Profile extends Component {
     }
 
     render() {
+      console.log(this.state.issues)
         return (
             <div className="container">
             <div className="main-body">
@@ -50,9 +49,9 @@ class Profile extends Component {
                   <div className="d-flex flex-column align-items-center text-center">
                     <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" className="rounded-circle" width="150"></img>
                     <div className="mt-3">
-                      <h4>{this.state.user.name}</h4>
+                      <h4>{this.props.auth.user.name}</h4>
                       <p className="text-secondary mb-1">Full Stack Developer</p>
-                      <p className="text-muted font-size-sm">{this.state.user.email}</p>
+                      <p className="text-muted font-size-sm">{this.props.auth.user.email}</p>
                     </div>
                   </div>
                 </div>
@@ -89,64 +88,65 @@ class Profile extends Component {
                   <div className="card h-100">
                     <div className="card-body">
                       <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">assignment</i>Project created by the user</h6>
-                      <Table style={{ marginTop: "10px" }}>
+                      {this.state.projects.length == 0 ? (<div><h4>NO PROJECT CREATED</h4> </div>) : <Table style={{ marginTop: "10px" }}>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Title</th>
                             <th>Description</th>
-                            {/* <th>Status</th> */}
+                            <th>More</th>
                         </tr>
                     </thead>
                     <tbody>
-                      {this.state.projects.map(({ _id, name, description}, index) => (
+                      {this.state.projects.map(({ _id, name, description, creator}, index) => (
                       <tr key={index}>
                       <th scope="row">{index + 1}</th>
-                      <td>{name}</td>
-                      <td>{description}</td>
-                      {/* <td>{status}</td> */}
-                      {/* <td><Link to={{pathname: 'project', state: {id: _id, description: description, creator: this.props.auth.user.id}}}><p>Details</p></Link></td> */}
+                      <td style={{textAlign:"center"}}>{name}</td>
+                      <td style={{textAlign:"center"}}>{description}</td>
+                      <td style={{textAlign:"center"}}><Link to={{pathname: 'project', state: {id: _id, name: name, description: description, creator: creator}}}><p>Details</p></Link></td>
                   </tr>
                         
                       )
                       )}
                       </tbody>
-                      </Table>
+                      </Table>}
                       
                     </div>
                   </div>
                 </div>
                 
                 <div className="col-sm-12 mb-3">
-                {this.state.issues.length == 0 ? "NO Issues" : (<div className="card h-100">
+      
+                <div className="card">
                     <div className="card-body">
                       <h6 className="d-flex align-items-center mb-3"><i className="material-icons text-info mr-2">assignment</i>Issues assigned to the user</h6>
-                      <Table style={{ marginTop: "10px" }}>
+                      {this.state.issues.length == 0 ? (<div><h4> NO ISSUES ASSIGNED</h4> </div>) : ( <div> <Table style={{ marginTop: "10px" }}>
                     <thead>
                         <tr>
                             <th>#</th>
                             <th>Title</th>
                             <th>Type</th>
                             <th>Status</th>
+                            <th>Details</th>
                         </tr>
                     </thead>
                     <tbody>
-                      {this.state.issues.map(({_id,title, issueType, status, description}, index) => (
+                      {this.state.issues.map(({_id, projectId, title, issueType, status, description}, index) => (
                       <tr key={index}>
                       <th scope="row">{index + 1}</th>
-                      <td>{title}</td>
-                      <td>{issueType}</td>
-                      <td>{status}</td>
-                      {/* <td><Link to={{pathname: 'project', state: {id: _id, description: description, creator: this.props.auth.user.id}}}><p>Details</p></Link></td> */}
+                      <td style={{textAlign:"center"}}>{title}</td>
+                      <td style={{textAlign:"center"}}>{issueType}</td>
+                      <td style={{textAlign:"center"}}>{status}</td>
+                      <td style={{textAlign:"center"}}><Link to={{pathname: 'updateIssue', state: {id: _id, status: status}}}><p>Details</p></Link> </td>
                   </tr>
                         
                       )
                       )}
                       </tbody>
-                      </Table>
+                      </Table> </div>)}
                       
                     </div>
-                  </div>)}
+                  </div>
       </div>
               </div>
 

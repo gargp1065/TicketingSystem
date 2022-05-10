@@ -17,6 +17,7 @@ class Project extends Component {
         this.state = {
             name: this.props.location.state.name,
             description: this.props.location.state.description,
+            creator: {},
             project: [],
             isModalOpen: false,
         }
@@ -28,18 +29,33 @@ class Project extends Component {
         this.viewIssues = this.viewIssues.bind(this);
     }
 
-
+    componentDidMount() {
+        
+        axios.get(`${API}/users/getUser/${this.props.location.state.creator}`).then(res => {
+            // console.log(res.data);
+            this.setState({
+                creator: res.data
+            })
+            console.log(this.state.creator)
+        })
+    }
     deleteProject(e) {
         e.preventDefault();
-        axios.delete(`${API}/projects/deleteProject/${this.props.location.state.id}`).then(res => {
-            alert("Project deleted");
+        const user = {
+            creator: this.props.location.state.creator
+        }
+        axios.delete(`${API}/projects/deleteProject/${this.props.location.state.id}`, { data: { creator: this.props.location.state.creator } }).then(res => {
+            alert(res.data.msg);
+            console.log(res.data);
             this.props.history.push('/dashboard');
-        }).catch(err => alert("Error in deleting"));
+        }).catch(err => {
+            console.log(err.msg);
+        });
     }
 
     viewIssues(e) {
         this.props.history.push({
-            pathname: 'issues', state: { id: this.props.location.state.id, name: this.props.location.state.name, description: this.props.location.state.description, creator: this.props.auth.user.id }
+            pathname: 'issues', state: { id: this.props.location.state.id, name: this.props.location.state.name, description: this.props.location.state.description}
         });
     }
 
@@ -81,13 +97,15 @@ class Project extends Component {
             <div className="container">
 
                 <div className="details" style={{
+                    textAlign: "center",
                     maxWidth: "800px",
                     margin: "auto",
                     fontFamily: "arial",
                     marginTop: "30px"
                 }}>
-                    <h2 style={{ textAlign: "center" }}>{this.state.name} </h2>
-                    <p style={{ fontSize: "25px" }}>{this.state.description}</p>
+                    <p style={{fontSize: "25px"}}>Project Name: {this.state.name} </p>
+                    <p style={{ fontSize: "25px" }}>Project Decription: {this.state.description}</p>
+                    <p style={{fontSize: "25px"}}>Project Created By : {this.state.creator.name}</p>
 
                 </div>
                 <div style={{textAlign: "center", marginTop: "30px"}}>

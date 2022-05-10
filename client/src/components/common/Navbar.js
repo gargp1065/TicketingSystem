@@ -22,7 +22,7 @@ class Navbar extends Component {
         <nav className="z-depth-0">
           <div className="nav-wrapper dark" style={{ backgroundColor: "teal" }}>
             <Link
-              to="/"
+              to={this.props.auth.isAuthenticated ? "/dashboard" : "/"}
               style={{
                 fontFamily: "monospace"
               }}

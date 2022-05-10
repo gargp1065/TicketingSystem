@@ -105,4 +105,14 @@ router.post('/login', (req, res, next) => {
 });
 
 
+//get user details with a particular id
+router.get('/getUser/:id', passport.authenticate('jwt', {session: false}), (req, res, next) => {
+    const userId = req.params.id
+    User.findById(userId).then((user) => {
+        logger.info("Details of a user");
+        res.json({name: user.name, email: user.email});
+    })
+    .catch(err => console.log(err));
+})
+
 module.exports = router;

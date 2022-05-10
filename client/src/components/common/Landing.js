@@ -8,14 +8,9 @@ class Landing extends Component {
         <div className = "container">
         <div className="row">
           <div className="col s12 center-align">
-            <h4>
-              <b>Build</b> a login/auth app with the{" "}
-              <span style={{ fontFamily: "monospace" }}>MERN</span> stack from
-              scratch
-            </h4>
-            <p className="flow-text grey-text text-darken-1">
-              Create a (minimal) full-stack app with user authentication via
-              passport and JWTs
+            
+            <p className="flow-text text-dark text-darken-1">
+                WELCOME TO PROJECT TICKETING SYSTEM.
             </p>
             <br />
             <div className="col s6">
@@ -38,7 +33,7 @@ class Landing extends Component {
                   marginTop: "1rem",
                   backgroundColor: "burlywood"
                 }}
-                className="btn btn-large btn-flat waves-effect hoverable accent-3"
+                className="btn btn-large btn-flat waves-effect hoverable accent-3 text-dark"
               >
                 Log In
               </Link>

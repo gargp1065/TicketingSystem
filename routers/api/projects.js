@@ -91,11 +91,21 @@ router.get('/detailProject/:projectId', passport.authenticate('jwt', {session: f
 //delete a project
 router.delete('/deleteProject/:projectId', passport.authenticate('jwt', {session: false}), (req, res, next) => {
     var projectId = req.params.projectId;
-
-    Project.findByIdAndDelete(projectId)
+    console.log(req.body);
+    const creator = req.body.creator;
+    Project.findById(projectId)
     .then((project) => {
-        logger.info("Project deleted");
-        res.status(200).json({msg: "Project deleted"});
+        console.log(project)
+        if(project.creator == creator) {
+            Project.findByIdAndDelete(projectId).then(project => {
+                logger.info("Project deleted");
+                res.status(200).json({msg: "Project deleted"});
+            }).catch((err) => res.status(404).json({msg : "Project did not exist"}))
+        }
+        else {
+            logger.info("Error in deleting the project")
+            res.status(200).json({msg : "You are not authorized."})
+        }
     })
     .catch(err => console.log(err));
 })

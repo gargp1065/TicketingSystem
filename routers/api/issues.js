@@ -41,7 +41,7 @@ router.get('/getIssue/:id', passport.authenticate('jwt', {session: false}), (req
         }
         else {
             logger.info('no issue');
-            return res.status(200).json({msg : "No issues"});
+            return res.status(200).json([]);
         }
     }).catch(err => console.log(err));
 })
@@ -95,7 +95,7 @@ router.post('/createIssue', passport.authenticate('jwt', {session: false}), (req
     .then((issue) => {
         logger.info('Issue created');
         res.status(200).json(issue)})
-    .catch(err => alert(err));
+    .catch(err => console.log(err));
 })
 
 //get all issues for a project

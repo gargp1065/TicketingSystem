@@ -46,7 +46,7 @@ class IssueTable extends Component {
         axios.post(`${API}/issues/createIssue`, newIssue).then(res => {
             alert("New Issue has been created.");
             this.setState({
-                issueType: '',
+                issueType: 'task',
                 title: '',
                 description: '',
                 assignee: '',

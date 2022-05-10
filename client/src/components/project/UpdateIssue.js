@@ -7,12 +7,19 @@ class UpdateIssue extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            status: ''
+            status: this.props.location.state.status, 
+            issue: {}
         }
         // this.onUpdate = this.onUpdate.bind(this);
     }
 
     componentDidMount() {
+        axios.get(`${API}/issues/detailIssue/${this.props.location.state.id}`).then((res) => {
+            this.setState({
+                issue: res.data
+            })
+
+        }).catch(err => console.log(err))
 
     }
     onUpdate(e) {
@@ -29,6 +36,16 @@ class UpdateIssue extends Component {
         }
         axios.put(`${API}/issues/updateIssue/${issueId}`, updatedIssue).then(res => {
             alert("Status have been updated");
+            this.setState({
+                status: this.state.status
+            })
+            this.props.location.state.status = this.state.status
+            axios.get(`${API}/issues/detailIssue/${this.props.location.state.id}`).then((res) => {
+                this.setState({
+                    issue: res.data
+                })
+    
+            }).catch(err => console.log(err))
         }).catch(err => alert("Error in updating the status"))
     }
     onChange = e => {
@@ -48,7 +65,25 @@ class UpdateIssue extends Component {
         return (
 
             <div className="container">
-                <div>
+                <div className="details" style={{
+                    
+                    maxWidth: "800px",
+                    margin: "auto",
+                    fontFamily: "arial",
+                    marginTop: "30px"
+                }}>
+                    <p style={{fontSize: "20px"}}>Issue Name: {this.state.issue.title} </p>
+                    <p style={{ fontSize: "20px" }}>Issue Description: {this.state.issue.description}</p>
+                    <p style={{fontSize: "20px"}}>Type: {this.state.issue.issueType}</p>
+                    <p style={{fontSize: "20px"}}>Status: {this.state.issue.status}</p>
+                    {/* <p style={{fontSize: "20px"}}>Reporter: {this.state.reporter}</p>
+                    <p style={{fontSize: "20px"}}>Assignee: {this.state.assignee}</p> */}
+
+
+                </div>
+                <div style={{maxWidth: "800px", margin: "auto",
+                    fontFamily: "arial",
+                    marginTop: "30px"   }}>
                     <form onSubmit={this.onSubmit}>
                         <label htmlFor="status">Select Status</label>
                         <select
