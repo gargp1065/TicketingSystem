@@ -275,3 +275,5 @@
 2022-05-10T05:19:40.269Z GET /api/issues/detailIssue/62752391cd41c815dc241658 200 232 - 88.827 ms
 2022-05-10T09:03:16.765Z POST /api/users/register 404 32 - 958.013 ms
 2022-05-10T09:03:17.087Z POST /api/users/login 200 239 - 300.749 ms
+2022-05-10T15:44:47.606Z GET /api/projects/getAll 304 - - 83.734 ms
+2022-05-10T15:44:48.629Z GET /api/projects/getAll 304 - - 53.695 ms

@@ -1,8 +1,8 @@
 //apiTest.js
 const request = require('supertest');
 const server = require('../server');
-describe('GET /register', function () {
-    it('respond with json containing a list of all users', function (done) {
+describe('POST /register', function () {
+    it('registering a user', function (done) {
         let data = {
             "name":"pranjal",
             "email":"hello@gmail.com",
@@ -15,8 +15,8 @@ describe('GET /register', function () {
     });
 });
 
-describe('GET /login', function () {
-    it('respond with json containing a list of all users', function (done) {
+describe('POST /login', function () {
+    it('logging in a user', function (done) {
         let data = {
             "email":"hello@gmail.com",
             "password":"asdfgh" 

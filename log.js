@@ -1633,3 +1633,6 @@
 2022-05-10 14:33:15:3315 info: Server is running 3001
 2022-05-10 14:33:16:3316 info: User already exists
 2022-05-10 14:33:17:3317 info: Successfull login by hello@gmail.com
+2022-05-10 21:14:33:1433 info: Server is running 3001
+2022-05-10 21:14:47:1447 info: All projects
+2022-05-10 21:14:48:1448 info: All projects
