@@ -1636,3 +1636,33 @@
 2022-05-10 21:14:33:1433 info: Server is running 3001
 2022-05-10 21:14:47:1447 info: All projects
 2022-05-10 21:14:48:1448 info: All projects
+2022-05-10 22:02:05:25 info: Server is running 3001
+2022-05-10 22:02:06:26 info: User already exists
+2022-05-10 22:02:07:27 info: Successfull login by hello@gmail.com
+2022-05-11 09:43:14:4314 info: Server is running 3001
+2022-05-11 09:43:42:4342 info: All projects
+2022-05-11 09:43:44:4344 info: Details of a user
+2022-05-11 09:43:44:4344 info: List of all users
+2022-05-11 09:43:44:4344 info: Issues for a project
+2022-05-11 09:43:46:4346 info: Details of issue with id 6278fdd0f388b3297eff3ae3
+2022-05-11 09:43:49:4349 info: Issue status updated
+2022-05-11 09:43:50:4350 info: Details of issue with id 6278fdd0f388b3297eff3ae3
+2022-05-11 09:43:52:4352 info: All projects
+2022-05-11 09:43:58:4358 info: Projects for a user
+2022-05-11 09:43:58:4358 info: Issues for a user
+2022-05-11 09:44:01:441 info: Details of issue with id 6277a0fea53558485bb3af3c
+2022-05-11 09:44:06:446 info: Issue status updated
+2022-05-11 09:44:08:448 info: Details of issue with id 6277a0fea53558485bb3af3c
+2022-05-11 09:44:09:449 info: Projects for a user
+2022-05-11 09:44:09:449 info: Issues for a user
+2022-05-11 09:45:04:454 info: Server is running 3001
+2022-05-11 09:45:12:4512 info: Successfull login by abc@def.com
+2022-05-11 09:45:12:4512 info: All projects
+2022-05-11 09:45:15:4515 info: List of all users
+2022-05-11 09:45:15:4515 info: Details of a user
+2022-05-11 09:45:18:4518 info: Error in deleting the project
+2022-05-11 09:45:20:4520 info: All projects
+2022-05-11 09:45:26:4526 info: List of all users
+2022-05-11 09:45:26:4526 info: Details of a user
+2022-05-11 09:45:28:4528 info: Project deleted
+2022-05-11 09:45:29:4529 info: All projects

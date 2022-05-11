@@ -30,10 +30,10 @@ mongoose
     .then(() => console.log("MongoDB Connected"))
     .catch((err) => console.log(err));
     
-    const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
+const accessLogStream = fs.createWriteStream(path.join(__dirname, 'access.log'), { flags: 'a' })
 
     // Setup the logger
-    app.use(morgan(':date[iso] :method :url :status :res[content-length] - :response-time ms', { stream: accessLogStream }))
+app.use(morgan(':date[iso] :method :url :status :res[content-length] - :response-time ms', { stream: accessLogStream }))
 app.use("/api/users", users);
 app.use("/api/projects", projects);
 app.use("/api/issues", issues);

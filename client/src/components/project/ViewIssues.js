@@ -21,7 +21,6 @@ class ViewIssues extends Component {
             id: this.props.location.state.id,
             name: this.props.location.state.name,
             description: this.props.location.state.description,
-
             project: [],
             issues: []
         }
