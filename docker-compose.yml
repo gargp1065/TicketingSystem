@@ -13,6 +13,8 @@ services:
       - "3001:3001"
     networks:
       - mern-app
+    volumes:
+      - ./logs:usr/src/app/access.log
 networks:
   mern-app:
     driver: bridge
