@@ -14,7 +14,7 @@ services:
     networks:
       - mern-app
     volumes:
-      - ./logs/access.log:usr/src/app/access.log
+      - /home/dexter/logs/access.log:usr/src/app/access.log
 networks:
   mern-app:
     driver: bridge
