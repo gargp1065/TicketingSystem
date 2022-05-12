@@ -7,12 +7,14 @@ services:
       - "3000:3000"
     networks:
       - mern-app
+      
   api-server:
     image: gargp1065/majorproject:server2
     ports:
       - "3001:3001"
     networks:
       - mern-app
+      
 networks:
   mern-app:
     driver: bridge
