@@ -13,8 +13,6 @@ services:
       - "3001:3001"
     networks:
       - mern-app
-    volumes:
-      - /home/dexter/logs/access.log:usr/src/app/access.log
 networks:
   mern-app:
     driver: bridge
